@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="fileName">./log/blog-service.log</Property>
+		<Property name="filePattern">{"level":"%p","time":"%d{yyyy-MM-dd HH:mm:ss.SSSZ}{GMT}","class":"%C{1}","method":"%M","message":"%enc{%m}{JSON}","exception":"%enc{%ex}{JSON}"}\n</Property>
+		<Property name="consolePattern">%p | %d{yyyy-MM-dd HH:mm:ss.SSSZ}{GMT} | %30.30C{1} | %30.30M | %m %ex\n</Property>
+	</Properties>
+	<Appenders>
+		<File name="fileAppender" fileName="${fileName}">
+			<PatternLayout pattern="${filePattern}" />
+		</File>
+		<Console name="consoleAppender" target="SYSTEM_OUT">
+			<PatternLayout pattern="${consolePattern}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="fileAppender" />
+			<AppenderRef ref="consoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
